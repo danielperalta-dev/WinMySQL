@@ -1,45 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+using System.Data;
+using System.Security.Policy;
 using System.Text;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
+
 
 namespace WinMySQL.Clases
 {
     internal class Datos
     {
-        string cadenaConexion = "server=localhost; database=winmysql";
+        string cadenaConexion = "server=localhost;user=luis;pwd=joseluis;Database=escolar";
         MySqlConnection conexion;
-        public void conectar()
+
+        private void Conectar()
         {
             try
             {
                 conexion = new MySqlConnection(cadenaConexion);
                 conexion.Open();
-
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
-        public void desconectar()
+
+        private void Desconectar()
         {
             try
             {
-                if(conexion!= null)
-                { 
-                conexion.Close();
+                if (conexion != null)
+                {
+                    conexion.Close();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al desconectar de la base de datos: " + ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
-        public MySqlConnection getConexion()
+
+
+        public DataSet ejecutar(string comando)
         {
-            return conexion;
+            try
+            {
+                Conectar();
+                MySqlDataAdapter da = new MySqlDataAdapter(comando, conexion);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
+
+        public bool ejecutarComando(String comando)
+        {
+            try
+            {
+                Conectar();
+                MySqlCommand cmd = new MySqlCommand(comando, conexion);
+                cmd.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+
     }
 }

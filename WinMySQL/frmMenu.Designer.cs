@@ -59,6 +59,7 @@
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             salirToolStripMenuItem.Size = new Size(180, 22);
             salirToolStripMenuItem.Text = "Salir";
+            salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
             // catalogoToolStripMenuItem
             // 
@@ -70,19 +71,20 @@
             // materiasToolStripMenuItem
             // 
             materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            materiasToolStripMenuItem.Size = new Size(180, 22);
+            materiasToolStripMenuItem.Size = new Size(129, 22);
             materiasToolStripMenuItem.Text = "Materias";
+            materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
             // 
             // alumnosToolStripMenuItem
             // 
             alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            alumnosToolStripMenuItem.Size = new Size(180, 22);
+            alumnosToolStripMenuItem.Size = new Size(129, 22);
             alumnosToolStripMenuItem.Text = "Alumnos";
             // 
             // profesoresToolStripMenuItem
             // 
             profesoresToolStripMenuItem.Name = "profesoresToolStripMenuItem";
-            profesoresToolStripMenuItem.Size = new Size(180, 22);
+            profesoresToolStripMenuItem.Size = new Size(129, 22);
             profesoresToolStripMenuItem.Text = "Profesores";
             // 
             // frmMenu

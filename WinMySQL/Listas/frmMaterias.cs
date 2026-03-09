@@ -5,11 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WinMySQL.Clases;
 
 namespace WinMySQL.Listas
 {
     public partial class frmMaterias : Form
     {
+        Datos datos = new Datos();
+        DataSet ds;
         public frmMaterias()
         {
             InitializeComponent();
@@ -17,6 +20,63 @@ namespace WinMySQL.Listas
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+
+
+        private void btnAgregarMateria_Click(object sender, EventArgs e)
+        {
+            frmMateria frm = new frmMateria();
+            frm.ShowDialog();
+        }
+
+        private void frmMaterias_Activated(object sender, EventArgs e)
+        {
+            try
+            {
+                ds = datos.ejecutar("Select * from Materias");
+                if (ds != null)
+                {
+                    dgvMaterias.DataSource = ds.Tables[0];
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        private void dgvMaterias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvMaterias_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmMateria materia = new frmMateria(
+                Convert.ToInt32(dgvMaterias.CurrentRow.Cells[0].Value),
+                dgvMaterias.CurrentRow.Cells[1].Value.ToString(),
+                dgvMaterias.CurrentRow.Cells[2].Value.ToString());
+            materia.ShowDialog();
+
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int idMateria = Convert.ToInt32(dgvMaterias.CurrentRow.Cells[0].Value);
+            if (MessageBox.Show("Deseas Eliminar la Materia:"
+                + dgvMaterias.CurrentRow.Cells[1].Value.ToString,
+                "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                bool f = datos.ejecutarComando($"Delete from Materia where idMateria={idMateria}");
+                if (f)
+                {
+                    MessageBox.Show("Materia Eliminada", "Sistema");
+
+                }
+                else
+                {
+                    MessageBox.Show("Error", "Sistema");
+                }
+            }
 
         }
     }
