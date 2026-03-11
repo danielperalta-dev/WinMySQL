@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using WINMYSQL.CLASES;
+using WinMySQL.Clases;
 
 namespace WINMYSQL.VISTAS
 {
@@ -24,7 +24,7 @@ namespace WINMYSQL.VISTAS
             InitializeComponent();
             this.id = id;
             txtProfesor.Text = Profesor;
-            txtClave.Text = cve;
+            txtClaveprof.Text = cve;
             updating = true;
         }
 
@@ -32,9 +32,9 @@ namespace WINMYSQL.VISTAS
         {
             if (updating == false)
             {
-                bool resultado = dt.ejecutarcomando(
-                    $"Insert into Profesor (Profesor,CVE) " +
-                    $"values ('{txtProfesor.Text}','{txtClave.Text}')");
+                string sql = $"INSERT INTO Profesores (Nombre, CVE) VALUES ('{txtProfesor.Text}', '{txtClaveprof.Text}')";
+
+                bool resultado = dt.ejecutarComando(sql);
 
                 if (resultado)
                 {
@@ -43,14 +43,14 @@ namespace WINMYSQL.VISTAS
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la Profesor");
+                    MessageBox.Show("Error al agregar al Profesor. Verifica que la CVE no esté repetida.");
                 }
             }
             else
             {
-                bool resultado = dt.ejecutarcomando(
-                    $"Update Profesor set Profesor='{txtProfesor.Text}', CVE='{txtClave.Text}' " +
-                    $"where idProfesor={id}");
+                string sqlUpdate = $"UPDATE Profesores SET Nombre='{txtProfesor.Text}', CVE='{txtClaveprof.Text}' WHERE idProfesores={id}";
+                bool resultado = dt.ejecutarComando(sqlUpdate);
+
                 if (resultado)
                 {
                     MessageBox.Show("Profesor actualizado correctamente");
@@ -61,6 +61,11 @@ namespace WINMYSQL.VISTAS
                     MessageBox.Show("Error al actualizar el Profesor");
                 }
             }
+        }
+
+        private void FrmProfesor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

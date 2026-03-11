@@ -1,12 +1,15 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using WINMYSQL.CLASES;
-using WINMYSQL.LISTAS;
+using WinMySQL.Clases;
+using WinMySQL.Listas;
+using OfficeOpenXml;
+
 
 namespace WINMYSQL.VISTAS
 {
@@ -14,6 +17,8 @@ namespace WINMYSQL.VISTAS
     {
         Datos Datos = new Datos();
         DataSet ds;
+        OpenFileDialog ofdExcel = new OpenFileDialog();
+
         public FrmAlumnos()
         {
             InitializeComponent();
@@ -66,7 +71,7 @@ namespace WINMYSQL.VISTAS
                 + dgvAlumnos.CurrentRow.Cells[1].Value.ToString(),
                 "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                bool f = Datos.ejecutarcomando($"Delete from Alumnos where idAlumnos={idAlumnos}");
+                bool f = Datos.ejecutarComando($"Delete from Alumnos where idAlumnos={idAlumnos}");
                 if (f)
                 {
                     MessageBox.Show("Alumno Eliminado", "Sistema");
@@ -79,5 +84,37 @@ namespace WINMYSQL.VISTAS
             }
         }
 
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            string path;
+            DialogResult dr = ofdExcel.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                path = ofdExcel.FileName;
+                ExcelPackage.License.SetNonCommercialPersonal("Daniel");
+                using (ExcelPackage excel = new ExcelPackage(new FileInfo(path)))
+                {
+                    ExcelWorksheet ws = excel.Workbook.Worksheets[0];
+                    int rowCount = ws.Dimension.Rows;
+                    int columnn = ws.Dimension.Columns;
+                    DataTable dt = new DataTable();
+                    for (int col = 1; col <= columnn; col++)
+                    {
+                        dt.Columns.Add(ws.Cells[1, col].Value.ToString());
+                    }
+                    for (int row = 2; row <= rowCount; row++)
+                    {
+                        DataRow drnew = dt.NewRow();
+                        for (int col = 1; col <= columnn; col++)
+                        {
+                            drnew[col - 1] = ws.Cells[row, col].Value.ToString();
+                        }
+                        dt.Rows.Add(drnew);
+                        String comando;
+                    }
+                }
+            }
+
+        }
     }
 }

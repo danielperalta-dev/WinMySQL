@@ -1,4 +1,5 @@
 using WinMySQL.Listas;
+using WINMYSQL.VISTAS;
 
 namespace WinMySQL
 {
@@ -18,6 +19,18 @@ namespace WinMySQL
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void alumnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAlumnos alumnos = new FrmAlumnos();
+            alumnos.Show();
+        }
+
+        private void profesoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmProfesores profesores = new FrmProfesores();
+            profesores.Show();
         }
     }
 }

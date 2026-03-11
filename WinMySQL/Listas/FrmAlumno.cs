@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using WINMYSQL.CLASES;
+using WinMySQL.Clases;
 
 namespace WINMYSQL.VISTAS
 {
@@ -23,7 +23,7 @@ namespace WINMYSQL.VISTAS
         {
             InitializeComponent();
             this.id = id;
-            txtAlumno.Text = Alumno;
+            txtPaterno.Text = Alumno;
             txtNumControl.Text = num;
             updating = true;
         }
@@ -32,9 +32,9 @@ namespace WINMYSQL.VISTAS
         {
             if (updating == false)
             {
-                bool resultado = dt.ejecutarcomando(
-                    $"Insert into Alumnos (Alumno,nControl) " +
-                    $"values ('{txtAlumno.Text}','{txtNumControl.Text}')");
+                bool resultado = dt.ejecutarComando(
+                    $"Insert into Alumnos (Control, Paterno, Materno, Nombre) " +
+                    $"values ('{txtNumControl.Text}', '{txtPaterno.Text}', '{txtMaterno.Text}', '{txtNombre.Text}')");
 
                 if (resultado)
                 {
@@ -43,14 +43,15 @@ namespace WINMYSQL.VISTAS
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la Alumno");
+                    MessageBox.Show("Error: El número de control ya existe o faltan datos.");
                 }
             }
             else
             {
-                bool resultado = dt.ejecutarcomando(
-                    $"Update Alumnos set Alumno='{txtAlumno.Text}', CVE='{txtNumControl.Text}' " +
-                    $"where idAlumnos={id}");
+                bool resultado = dt.ejecutarComando(
+                    $"Update Alumnos set Paterno='{txtPaterno.Text}', Materno='{txtMaterno.Text}', " +
+                    $"Nombre='{txtNombre.Text}' where Control='{id}'");
+
                 if (resultado)
                 {
                     MessageBox.Show("Alumno actualizado correctamente");
@@ -61,6 +62,11 @@ namespace WINMYSQL.VISTAS
                     MessageBox.Show("Error al actualizar el Alumno");
                 }
             }
+        }
+
+        private void FrmAlumno_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using WINMYSQL.CLASES;
+using WinMySQL.Clases;
 
 namespace WINMYSQL.VISTAS
 {
@@ -21,14 +21,14 @@ namespace WINMYSQL.VISTAS
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FrmProfesor profes = new FrmProfesor();
-            profes.Show();
+            profes.ShowDialog();
         }
 
         private void FrmProfesores_Activated(object sender, EventArgs e)
         {
             try
             {
-                ds = Datos.ejecutar("Select * from Profesor");
+                ds = Datos.ejecutar("Select * from Profesores");
                 if (ds != null)
                 {
                     dgvProfesor.DataSource = ds.Tables[0];
@@ -41,13 +41,23 @@ namespace WINMYSQL.VISTAS
         {
             try
             {
-                ds = Datos.ejecutar("Select * from Profesor");
+                ds = Datos.ejecutar("Select * from Profesores");
                 if (ds != null)
                 {
                     dgvProfesor.DataSource = ds.Tables[0];
                 }
             }
             catch (Exception ex) { }
+        }
+
+        private void dgvProfesor_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FrmProfesor profe = new FrmProfesor(
+                 Convert.ToInt32(dgvProfesor.CurrentRow.Cells[0].Value),
+              dgvProfesor.CurrentRow.Cells[1].Value.ToString(),
+             dgvProfesor.CurrentRow.Cells[2].Value.ToString());
+
+            profe.ShowDialog();
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,7 +67,7 @@ namespace WINMYSQL.VISTAS
                 + dgvProfesor.CurrentRow.Cells[1].Value.ToString(),
                 "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                bool f = Datos.ejecutarcomando($"Delete from Profesor where idProfesor={idProfesor}");
+                bool f = Datos.ejecutarComando($"Delete from Profesores where idProfesor={idProfesor}");
                 if (f)
                 {
                     MessageBox.Show("Profesor Eliminado", "Sistema");
@@ -68,14 +78,6 @@ namespace WINMYSQL.VISTAS
                     MessageBox.Show("Error", "Sistema");
                 }
             }
-        }
-
-        private void dgvProfesor_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            FrmProfesor profe = new FrmProfesor(Convert.ToInt32(dgvProfesor.CurrentRow.Cells[0].Value),
-                                                             dgvProfesor.CurrentRow.Cells[1].Value.ToString(),
-                                                             dgvProfesor.CurrentRow.Cells[2].Value.ToString());
-            profe.ShowDialog();
         }
     }
 }

@@ -31,64 +31,69 @@
             label1 = new Label();
             label2 = new Label();
             txtProfesor = new TextBox();
-            txtClave = new TextBox();
             btnAceptar = new Button();
+            txtClaveprof = new TextBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(57, 47);
+            label1.Location = new Point(50, 35);
             label1.Name = "label1";
-            label1.Size = new Size(64, 20);
+            label1.Size = new Size(51, 15);
             label1.TabIndex = 0;
             label1.Text = "Profesor";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(57, 149);
+            label2.Location = new Point(50, 112);
             label2.Name = "label2";
-            label2.Size = new Size(45, 20);
+            label2.Size = new Size(36, 15);
             label2.TabIndex = 1;
             label2.Text = "Clave";
             // 
             // txtProfesor
             // 
-            txtProfesor.Location = new Point(57, 87);
+            txtProfesor.Location = new Point(50, 65);
+            txtProfesor.Margin = new Padding(3, 2, 3, 2);
             txtProfesor.Name = "txtProfesor";
-            txtProfesor.Size = new Size(568, 27);
+            txtProfesor.Size = new Size(498, 23);
             txtProfesor.TabIndex = 2;
-            // 
-            // txtClave
-            // 
-            txtClave.Location = new Point(57, 186);
-            txtClave.Name = "txtClave";
-            txtClave.Size = new Size(568, 27);
-            txtClave.TabIndex = 3;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(656, 186);
+            btnAceptar.Location = new Point(574, 140);
+            btnAceptar.Margin = new Padding(3, 2, 3, 2);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(94, 29);
+            btnAceptar.Size = new Size(82, 22);
             btnAceptar.TabIndex = 4;
             btnAceptar.Text = "ACEPTAR";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
             // 
+            // txtClaveprof
+            // 
+            txtClaveprof.Location = new Point(50, 140);
+            txtClaveprof.Margin = new Padding(3, 2, 3, 2);
+            txtClaveprof.Name = "txtClaveprof";
+            txtClaveprof.Size = new Size(498, 23);
+            txtClaveprof.TabIndex = 3;
+            // 
             // FrmProfesor
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 252);
+            ClientSize = new Size(700, 189);
             Controls.Add(btnAceptar);
-            Controls.Add(txtClave);
+            Controls.Add(txtClaveprof);
             Controls.Add(txtProfesor);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmProfesor";
             Text = "FrmProfesor";
+            Load += FrmProfesor_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -98,7 +103,7 @@
         private Label label1;
         private Label label2;
         private TextBox txtProfesor;
-        private TextBox txtClave;
         private Button btnAceptar;
+        private TextBox txtClaveprof;
     }
 }

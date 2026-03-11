@@ -66,7 +66,7 @@ namespace WinMySQL.Listas
                 + dgvMaterias.CurrentRow.Cells[1].Value.ToString,
                 "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                bool f = datos.ejecutarComando($"Delete from Materia where idMateria={idMateria}");
+                bool f = datos.ejecutarComando($"Delete from Materias where idMateria={idMateria}");
                 if (f)
                 {
                     MessageBox.Show("Materia Eliminada", "Sistema");
