@@ -11,7 +11,7 @@ namespace WinMySQL.Clases
 {
     internal class Datos
     {
-        string cadenaConexion = "server=10.19.43.186;port=3307;user=luis;pwd=joseluis;Database=escolar";
+        string cadenaConexion = "server=192.168.64.1;port=3307;user=luis;pwd=joseluis;Database=escolar";
         MySqlConnection conexion;
 
         private void Conectar()

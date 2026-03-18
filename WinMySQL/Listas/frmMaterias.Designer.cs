@@ -56,6 +56,7 @@
             splitContainer1.Panel1.Controls.Add(btnAgregarMateria);
             splitContainer1.Panel1.Controls.Add(lblBuscar);
             splitContainer1.Panel1.Controls.Add(txtMaterias);
+            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
             // 
@@ -90,6 +91,7 @@
             txtMaterias.Name = "txtMaterias";
             txtMaterias.Size = new Size(571, 23);
             txtMaterias.TabIndex = 0;
+            txtMaterias.TextChanged += txtMaterias_TextChanged;
             // 
             // dgvMaterias
             // 
@@ -99,6 +101,7 @@
             dgvMaterias.Name = "dgvMaterias";
             dgvMaterias.Size = new Size(794, 346);
             dgvMaterias.TabIndex = 0;
+            dgvMaterias.CellClick += dgvMaterias_CellClick;
             dgvMaterias.CellContentClick += dgvMaterias_CellContentClick;
             dgvMaterias.CellContentDoubleClick += dgvMaterias_CellContentDoubleClick;
             // 
@@ -106,12 +109,12 @@
             // 
             cmsData.Items.AddRange(new ToolStripItem[] { eliminarToolStripMenuItem });
             cmsData.Name = "cmsData";
-            cmsData.Size = new Size(181, 48);
+            cmsData.Size = new Size(118, 26);
             // 
             // eliminarToolStripMenuItem
             // 
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(180, 22);
+            eliminarToolStripMenuItem.Size = new Size(117, 22);
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
@@ -124,6 +127,7 @@
             Name = "frmMaterias";
             Text = "frmMaterias";
             Activated += frmMaterias_Activated;
+            Load += frmMaterias_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
@@ -137,11 +141,11 @@
         #endregion
 
         private SplitContainer splitContainer1;
-        private DataGridView dgvMaterias;
         private Button btnAgregarMateria;
         private Label lblBuscar;
         private TextBox txtMaterias;
         private ContextMenuStrip cmsData;
         private ToolStripMenuItem eliminarToolStripMenuItem;
+        private DataGridView dgvMaterias;
     }
 }

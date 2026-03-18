@@ -1,6 +1,6 @@
-﻿namespace WINMYSQL.VISTAS
+﻿namespace WinMySQL.Listas
 {
-    partial class FrmAlumno
+    partial class frmAlumno
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,12 @@
             txtMaterno = new TextBox();
             txtNombre = new TextBox();
             lblPaterno = new Label();
+            lblSemestre = new Label();
+            txtSemestre = new TextBox();
+            txtCarrera = new TextBox();
+            lblCarrera = new Label();
+            lblSnombre = new Label();
+            txtSNombre = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -52,7 +58,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(36, 318);
+            label2.Location = new Point(36, 348);
             label2.Name = "label2";
             label2.Size = new Size(80, 15);
             label2.TabIndex = 1;
@@ -60,7 +66,7 @@
             // 
             // txtPaterno
             // 
-            txtPaterno.Location = new Point(36, 104);
+            txtPaterno.Location = new Point(36, 209);
             txtPaterno.Margin = new Padding(3, 2, 3, 2);
             txtPaterno.Name = "txtPaterno";
             txtPaterno.Size = new Size(423, 23);
@@ -68,7 +74,7 @@
             // 
             // txtNumControl
             // 
-            txtNumControl.Location = new Point(36, 335);
+            txtNumControl.Location = new Point(36, 378);
             txtNumControl.Margin = new Padding(3, 2, 3, 2);
             txtNumControl.Name = "txtNumControl";
             txtNumControl.Size = new Size(423, 23);
@@ -76,19 +82,19 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(531, 200);
+            btnAceptar.Location = new Point(508, 267);
             btnAceptar.Margin = new Padding(3, 2, 3, 2);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(93, 26);
             btnAceptar.TabIndex = 4;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
-            btnAceptar.Click += button1_Click;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // lblMaterno
             // 
             lblMaterno.AutoSize = true;
-            lblMaterno.Location = new Point(36, 169);
+            lblMaterno.Location = new Point(36, 265);
             lblMaterno.Name = "lblMaterno";
             lblMaterno.Size = new Size(102, 15);
             lblMaterno.TabIndex = 5;
@@ -97,7 +103,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(36, 241);
+            lblNombre.Location = new Point(36, 49);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(51, 15);
             lblNombre.TabIndex = 6;
@@ -105,7 +111,7 @@
             // 
             // txtMaterno
             // 
-            txtMaterno.Location = new Point(36, 200);
+            txtMaterno.Location = new Point(36, 292);
             txtMaterno.Margin = new Padding(3, 2, 3, 2);
             txtMaterno.Name = "txtMaterno";
             txtMaterno.Size = new Size(423, 23);
@@ -113,7 +119,7 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(36, 268);
+            txtNombre.Location = new Point(36, 80);
             txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(423, 23);
@@ -122,17 +128,74 @@
             // lblPaterno
             // 
             lblPaterno.AutoSize = true;
-            lblPaterno.Location = new Point(36, 76);
+            lblPaterno.Location = new Point(36, 181);
             lblPaterno.Name = "lblPaterno";
             lblPaterno.Size = new Size(95, 15);
             lblPaterno.TabIndex = 10;
             lblPaterno.Text = "Apellido paterno";
             // 
+            // lblSemestre
+            // 
+            lblSemestre.AutoSize = true;
+            lblSemestre.Location = new Point(36, 426);
+            lblSemestre.Name = "lblSemestre";
+            lblSemestre.Size = new Size(55, 15);
+            lblSemestre.TabIndex = 11;
+            lblSemestre.Text = "Semestre";
+            // 
+            // txtSemestre
+            // 
+            txtSemestre.Location = new Point(36, 456);
+            txtSemestre.Margin = new Padding(3, 2, 3, 2);
+            txtSemestre.Name = "txtSemestre";
+            txtSemestre.Size = new Size(423, 23);
+            txtSemestre.TabIndex = 12;
+            // 
+            // txtCarrera
+            // 
+            txtCarrera.Location = new Point(36, 522);
+            txtCarrera.Margin = new Padding(3, 2, 3, 2);
+            txtCarrera.Name = "txtCarrera";
+            txtCarrera.Size = new Size(423, 23);
+            txtCarrera.TabIndex = 13;
+            // 
+            // lblCarrera
+            // 
+            lblCarrera.AutoSize = true;
+            lblCarrera.Location = new Point(36, 505);
+            lblCarrera.Name = "lblCarrera";
+            lblCarrera.Size = new Size(45, 15);
+            lblCarrera.TabIndex = 14;
+            lblCarrera.Text = "Carrera";
+            // 
+            // lblSnombre
+            // 
+            lblSnombre.AutoSize = true;
+            lblSnombre.Location = new Point(35, 114);
+            lblSnombre.Name = "lblSnombre";
+            lblSnombre.Size = new Size(99, 15);
+            lblSnombre.TabIndex = 15;
+            lblSnombre.Text = "Segundo nombre";
+            // 
+            // txtSNombre
+            // 
+            txtSNombre.Location = new Point(36, 142);
+            txtSNombre.Margin = new Padding(3, 2, 3, 2);
+            txtSNombre.Name = "txtSNombre";
+            txtSNombre.Size = new Size(423, 23);
+            txtSNombre.TabIndex = 16;
+            // 
             // FrmAlumno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 382);
+            ClientSize = new Size(700, 570);
+            Controls.Add(txtSNombre);
+            Controls.Add(lblSnombre);
+            Controls.Add(lblCarrera);
+            Controls.Add(txtCarrera);
+            Controls.Add(txtSemestre);
+            Controls.Add(lblSemestre);
             Controls.Add(lblPaterno);
             Controls.Add(txtNombre);
             Controls.Add(txtMaterno);
@@ -163,5 +226,11 @@
         private TextBox txtMaterno;
         private TextBox txtNombre;
         private Label lblPaterno;
+        private Label lblSemestre;
+        private TextBox txtSemestre;
+        private TextBox txtCarrera;
+        private Label lblCarrera;
+        private Label lblSnombre;
+        private TextBox txtSNombre;
     }
 }

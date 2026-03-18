@@ -62,8 +62,8 @@ namespace WinMySQL.Listas
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int idMateria = Convert.ToInt32(dgvMaterias.CurrentRow.Cells[0].Value);
-            if (MessageBox.Show("Deseas Eliminar la Materia:"
-                + dgvMaterias.CurrentRow.Cells[1].Value.ToString,
+            if (MessageBox.Show("Deseas Eliminar la Materia: "
+                + dgvMaterias.CurrentRow.Cells[1].Value.ToString(),
                 "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 bool f = datos.ejecutarComando($"Delete from Materias where idMateria={idMateria}");
@@ -73,10 +73,37 @@ namespace WinMySQL.Listas
 
                 }
                 else
-                {
+
                     MessageBox.Show("Error", "Sistema");
-                }
             }
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void busqueda()
+        {
+            ds = datos.ejecutar($"Select * from Materias where Materia like ('%{txtMaterias.Text}%')");
+            if (ds != null)
+            {
+                dgvMaterias.DataSource = ds.Tables[0];
+            }
+        }
+
+        private void frmMaterias_Load(object sender, EventArgs e)
+        {
+            busqueda();
+        }
+
+        private void txtMaterias_TextChanged(object sender, EventArgs e)
+        {
+            busqueda();
+        }
+
+        private void dgvMaterias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

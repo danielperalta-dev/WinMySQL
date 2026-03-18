@@ -7,19 +7,19 @@ using System.Text;
 using System.Windows.Forms;
 using WinMySQL.Clases;
 
-namespace WINMYSQL.VISTAS
+namespace WinMySQL.Listas
 {
-    public partial class FrmProfesor : Form
+    public partial class frmProfesor : Form
     {
         int id = 0;
         bool updating = false;
         Datos dt = new Datos();
-        public FrmProfesor()
+        public frmProfesor()
         {
             InitializeComponent();
         }
 
-        public FrmProfesor(int id, string Profesor, string cve)
+        public frmProfesor(int id, string Profesor, string cve)
         {
             InitializeComponent();
             this.id = id;

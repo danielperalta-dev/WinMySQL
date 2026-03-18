@@ -1,6 +1,6 @@
-﻿namespace WINMYSQL.VISTAS
+﻿namespace WinMySQL.Listas 
 {
-    partial class FrmAlumnos
+    partial class frmAlumnos
     {
         /// <summary>
         /// Required designer variable.
@@ -35,14 +35,14 @@
             txtAlumnos = new TextBox();
             label1 = new Label();
             dgvAlumnos = new DataGridView();
-            cmsDataA = new ContextMenuStrip(components);
+            cmsAlumnos = new ContextMenuStrip(components);
             eliminarToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).BeginInit();
-            cmsDataA.SuspendLayout();
+            cmsAlumnos.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -70,7 +70,7 @@
             // 
             // btnImportar
             // 
-            btnImportar.Location = new Point(571, 62);
+            btnImportar.Location = new Point(571, 46);
             btnImportar.Name = "btnImportar";
             btnImportar.Size = new Size(75, 23);
             btnImportar.TabIndex = 3;
@@ -96,6 +96,7 @@
             txtAlumnos.Name = "txtAlumnos";
             txtAlumnos.Size = new Size(489, 23);
             txtAlumnos.TabIndex = 1;
+            txtAlumnos.TextChanged += txtAlumnos_TextChanged;
             // 
             // label1
             // 
@@ -109,6 +110,7 @@
             // dgvAlumnos
             // 
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAlumnos.ContextMenuStrip = cmsAlumnos;
             dgvAlumnos.Dock = DockStyle.Fill;
             dgvAlumnos.Location = new Point(0, 0);
             dgvAlumnos.Margin = new Padding(3, 2, 3, 2);
@@ -118,12 +120,11 @@
             dgvAlumnos.TabIndex = 0;
             dgvAlumnos.CellContentDoubleClick += dgvAlumnos_CellContentDoubleClick;
             // 
-            // cmsDataA
+            // cmsAlumnos
             // 
-            cmsDataA.ImageScalingSize = new Size(20, 20);
-            cmsDataA.Items.AddRange(new ToolStripItem[] { eliminarToolStripMenuItem });
-            cmsDataA.Name = "cmsDataA";
-            cmsDataA.Size = new Size(118, 26);
+            cmsAlumnos.Items.AddRange(new ToolStripItem[] { eliminarToolStripMenuItem });
+            cmsAlumnos.Name = "cmsAlumnos";
+            cmsAlumnos.Size = new Size(118, 26);
             // 
             // eliminarToolStripMenuItem
             // 
@@ -132,24 +133,24 @@
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
-            // FrmAlumnos
+            // frmAlumnos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(715, 371);
             Controls.Add(splitContainer1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "FrmAlumnos";
-            Text = "FrmAlumnos";
-            Activated += FrmAlumnos_Activated;
-            Load += FrmAlumnos_Load;
+            Name = "frmAlumnos";
+            Text = "frmAlumnos";
+            Activated += frmAlumnos_Activated;
+            Load += frmAlumnos_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).EndInit();
-            cmsDataA.ResumeLayout(false);
+            cmsAlumnos.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -160,8 +161,8 @@
         private Label label1;
         private DataGridView dgvAlumnos;
         private Button btnAgregarAlumnos;
-        private ContextMenuStrip cmsDataA;
-        private ToolStripMenuItem eliminarToolStripMenuItem;
         private Button btnImportar;
+        private ContextMenuStrip cmsAlumnos;
+        private ToolStripMenuItem eliminarToolStripMenuItem;
     }
 }

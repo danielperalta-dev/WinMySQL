@@ -1,6 +1,6 @@
-﻿namespace WINMYSQL.VISTAS
+﻿namespace WinMySQL.Listas
 {
-    partial class FrmProfesor
+    partial class frmProfesor
     {
         /// <summary>
         /// Required designer variable.

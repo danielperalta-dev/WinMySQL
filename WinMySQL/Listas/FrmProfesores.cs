@@ -6,21 +6,22 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WinMySQL.Clases;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace WINMYSQL.VISTAS
+namespace WinMySQL.Listas
 {
-    public partial class FrmProfesores : Form
+    public partial class frmProfesores : Form
     {
         Datos Datos = new Datos();
         DataSet ds;
-        public FrmProfesores()
+        public frmProfesores()
         {
             InitializeComponent();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            FrmProfesor profes = new FrmProfesor();
+            frmProfesor profes = new frmProfesor();
             profes.ShowDialog();
         }
 
@@ -39,20 +40,12 @@ namespace WINMYSQL.VISTAS
 
         private void FrmProfesores_Load(object sender, EventArgs e)
         {
-            try
-            {
-                ds = Datos.ejecutar("Select * from Profesores");
-                if (ds != null)
-                {
-                    dgvProfesor.DataSource = ds.Tables[0];
-                }
-            }
-            catch (Exception ex) { }
+            busqueda();
         }
 
         private void dgvProfesor_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            FrmProfesor profe = new FrmProfesor(
+            frmProfesor profe = new frmProfesor(
                  Convert.ToInt32(dgvProfesor.CurrentRow.Cells[0].Value),
               dgvProfesor.CurrentRow.Cells[1].Value.ToString(),
              dgvProfesor.CurrentRow.Cells[2].Value.ToString());
@@ -67,7 +60,7 @@ namespace WINMYSQL.VISTAS
                 + dgvProfesor.CurrentRow.Cells[1].Value.ToString(),
                 "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                bool f = Datos.ejecutarComando($"Delete from Profesores where idProfesor={idProfesor}");
+                bool f = Datos.ejecutarComando($"Delete from Profesores where idProfesores={idProfesor}");
                 if (f)
                 {
                     MessageBox.Show("Profesor Eliminado", "Sistema");
@@ -79,5 +72,20 @@ namespace WINMYSQL.VISTAS
                 }
             }
         }
+
+        private void busqueda()
+        {
+            ds = Datos.ejecutar($"Select * from Profesores where Nombre like ('%{txtProfesores.Text}%')");
+            if (ds != null)
+            {
+                dgvProfesor.DataSource = ds.Tables[0];
+            }
+        }
+
+        private void txtProfesores_TextChanged(object sender, EventArgs e)
+        {
+            busqueda();
+        }
+
     }
 }

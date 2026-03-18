@@ -1,6 +1,6 @@
-﻿namespace WINMYSQL.VISTAS
+﻿namespace WinMySQL.Listas
 {
-    partial class FrmProfesores
+    partial class frmProfesores
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
             btnAgregar = new Button();
-            textBox1 = new TextBox();
+            txtProfesores = new TextBox();
             label1 = new Label();
             dgvProfesor = new DataGridView();
             cmsDataP = new ContextMenuStrip(components);
@@ -55,7 +55,7 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(btnAgregar);
-            splitContainer1.Panel1.Controls.Add(textBox1);
+            splitContainer1.Panel1.Controls.Add(txtProfesores);
             splitContainer1.Panel1.Controls.Add(label1);
             // 
             // splitContainer1.Panel2
@@ -77,13 +77,14 @@
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // textBox1
+            // txtProfesores
             // 
-            textBox1.Location = new Point(41, 47);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(498, 23);
-            textBox1.TabIndex = 1;
+            txtProfesores.Location = new Point(41, 47);
+            txtProfesores.Margin = new Padding(3, 2, 3, 2);
+            txtProfesores.Name = "txtProfesores";
+            txtProfesores.Size = new Size(498, 23);
+            txtProfesores.TabIndex = 1;
+            txtProfesores.TextChanged += txtProfesores_TextChanged;
             // 
             // label1
             // 
@@ -97,6 +98,7 @@
             // dgvProfesor
             // 
             dgvProfesor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProfesor.ContextMenuStrip = cmsDataP;
             dgvProfesor.Dock = DockStyle.Fill;
             dgvProfesor.Location = new Point(0, 0);
             dgvProfesor.Margin = new Padding(3, 2, 3, 2);
@@ -111,23 +113,23 @@
             cmsDataP.ImageScalingSize = new Size(20, 20);
             cmsDataP.Items.AddRange(new ToolStripItem[] { eliminarToolStripMenuItem });
             cmsDataP.Name = "contextMenuStrip1";
-            cmsDataP.Size = new Size(181, 48);
+            cmsDataP.Size = new Size(118, 26);
             // 
             // eliminarToolStripMenuItem
             // 
             eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(180, 22);
+            eliminarToolStripMenuItem.Size = new Size(117, 22);
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
-            // FrmProfesores
+            // frmProfesores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
             Controls.Add(splitContainer1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "FrmProfesores";
+            Name = "frmProfesores";
             Text = "FrmProfesores";
             Activated += FrmProfesores_Activated;
             Load += FrmProfesores_Load;
@@ -145,7 +147,7 @@
 
         private SplitContainer splitContainer1;
         private Button btnAgregar;
-        private TextBox textBox1;
+        private TextBox txtProfesores;
         private Label label1;
         private ContextMenuStrip cmsDataP;
         private ToolStripMenuItem eliminarToolStripMenuItem;

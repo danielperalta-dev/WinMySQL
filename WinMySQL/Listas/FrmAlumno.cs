@@ -7,34 +7,39 @@ using System.Text;
 using System.Windows.Forms;
 using WinMySQL.Clases;
 
-namespace WINMYSQL.VISTAS
+namespace WinMySQL.Listas
 {
-    public partial class FrmAlumno : Form
+    public partial class frmAlumno : Form
     {
         int id = 0;
         bool updating = false;
         Datos dt = new Datos();
-        public FrmAlumno()
+        public frmAlumno()
         {
             InitializeComponent();
         }
 
-        public FrmAlumno(int id, string Alumno, string num)
+        public frmAlumno(int id, string nombre, string sNombre, string apPat, string apMat, int numControl, string semestre, string carrera)
         {
             InitializeComponent();
             this.id = id;
-            txtPaterno.Text = Alumno;
-            txtNumControl.Text = num;
+            txtNombre.Text = nombre;
+            txtSNombre.Text = sNombre;
+            txtPaterno.Text = apPat;
+            txtMaterno.Text = apMat;
+            txtNumControl.Text = numControl.ToString();
+            txtSemestre.Text = semestre;
+            txtCarrera.Text = carrera;
             updating = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (updating == false)
             {
                 bool resultado = dt.ejecutarComando(
-                    $"Insert into Alumnos (Control, Paterno, Materno, Nombre) " +
-                    $"values ('{txtNumControl.Text}', '{txtPaterno.Text}', '{txtMaterno.Text}', '{txtNombre.Text}')");
+                    $"Insert into Alumnos (Nombre, SegundoNombre, ApellidoPat, ApellidoMat, NumeroControl, Semestre, Carrera) " +
+                    $"values ('{txtNombre.Text}', '{txtSNombre.Text}', '{txtPaterno.Text}', '{txtMaterno.Text}','{txtNumControl.Text}','{txtSemestre.Text}','{txtCarrera.Text}')");
 
                 if (resultado)
                 {
@@ -49,8 +54,15 @@ namespace WINMYSQL.VISTAS
             else
             {
                 bool resultado = dt.ejecutarComando(
-                    $"Update Alumnos set Paterno='{txtPaterno.Text}', Materno='{txtMaterno.Text}', " +
-                    $"Nombre='{txtNombre.Text}' where Control='{id}'");
+                    $"UPDATE Alumnos SET " +
+                    $"Nombre = '{txtNombre.Text}', " +
+                    $"SegundoNombre = '{txtSNombre.Text}', " +
+                    $"ApellidoPat = '{txtPaterno.Text}', " +
+                    $"ApellidoMat = '{txtMaterno.Text}', " +
+                    $"NumeroControl = '{txtNumControl.Text}', " +
+                    $"Semestre = '{txtSemestre.Text}', " +
+                    $"Carrera = '{txtCarrera.Text}' " +
+                    $"WHERE idAlumno = {id}");
 
                 if (resultado)
                 {
