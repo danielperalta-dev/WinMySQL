@@ -56,7 +56,7 @@ namespace WinMySQL.Listas
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int idProfesor = Convert.ToInt32(dgvProfesor.CurrentRow.Cells[0].Value);
-            if (MessageBox.Show("Deseas Eliminar El Profesor:"
+            if (MessageBox.Show("Deseas Eliminar El Profesor: "
                 + dgvProfesor.CurrentRow.Cells[1].Value.ToString(),
                 "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {

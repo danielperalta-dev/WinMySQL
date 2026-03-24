@@ -20,8 +20,7 @@ namespace WinMySQL.Listas
         }
 
         public frmAlumno(int id, string nombre, string sNombre, string apPat, string apMat, int numControl, string semestre, string carrera)
-        {
-            InitializeComponent();
+        { 
             this.id = id;
             txtNombre.Text = nombre;
             txtSNombre.Text = sNombre;
